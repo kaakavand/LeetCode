@@ -1,20 +1,14 @@
 function findMedianSortedArrays(nums1, nums2) {
-  const array = [...nums1, ...nums2].sort();
-
-  let res = 0;
-
-  if (array.length % 2 === 0) {
-    const value =
-      (array[Math.floor(array.length / 2)] +
-        array[Math.floor(array.length / 2) - 1]) /
-      2;
-    res = value;
-  } else {
-    res = array[Math.floor(array.length / 2)];
-  }
-
-  console.log(res);
+    const mergedArray = [...nums1, ...nums2].sort((a, b) => a - b);
   
-}
-
-findMedianSortedArrays([3], [-1 , -2]);
+    const length = mergedArray.length;
+    if (length % 2 === 0) {
+      const mid1 = length / 2;
+      const mid2 = mid1 - 1;
+      const median = (mergedArray[mid1] + mergedArray[mid2]) / 2;
+      return median;
+    } else {
+      const mid = Math.floor(length / 2);
+      return mergedArray[mid];
+    }
+  }
